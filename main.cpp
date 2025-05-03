@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <exception>
+#include <EventFactory.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, char* argv[])
         while(!fs.eof())
         {
             EventConfig ef = Parser::parse_event(fs);
+            Event* event = EventFactory::create_event(ef).get();
         }
 
     }

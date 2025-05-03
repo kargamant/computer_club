@@ -1,6 +1,7 @@
 #include <Event.hpp>
 #include <string>
 #include <Time.hpp>
+#include <EventConfig.hpp>
 
 class TableEvent : public Event
 {
@@ -12,4 +13,5 @@ class TableEvent : public Event
             Event(time, id), 
             client_name(client_name), 
             table_number(table_number) {}
+        TableEvent(const EventConfig& config);
 };

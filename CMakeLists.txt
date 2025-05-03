@@ -11,6 +11,7 @@ endif (UNIX)
 Project("COMPUTER_CLUB")
 
 add_subdirectory(Time)
+add_subdirectory(Table)
 add_subdirectory(Event)
 add_subdirectory(Club)
 add_subdirectory(Parser)

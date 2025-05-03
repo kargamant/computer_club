@@ -1,3 +1,4 @@
+#pragma once
 #include <EventType.hpp>
 #include <string>
 #include <variant>
