@@ -15,7 +15,7 @@ class Parser
     public:
 
         // creates club object with configuration in first 3 lines
-        ClubConfig parse_config(std::fstream& fs);
+        ClubConfig parse_config(std::ifstream& fs);
         // parses excactly one event
-        EventConfig parse_event(std::fstream& fs);
+        EventConfig parse_event(std::ifstream& fs);
 };
