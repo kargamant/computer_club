@@ -1,10 +1,11 @@
 #include <EventType.hpp>
+#include <Time.hpp>
 
 class Event
 {
     private:
-        int time;
+        Time time;
         EventType id;
     protected:
-        Event(int time, EventType id) : time(time), id(id) {}
+        Event(Time time, EventType id) : time(time), id(id) {}
 };

@@ -1,17 +1,18 @@
 #include <EventType.hpp>
 #include <string>
 #include <variant>
+#include <Time.hpp>
 
 struct ClientEventConfig
 {
-    int time;
+    Time time;
     EventType id;
     std::string client_name;
 };
 
 struct TableEventConfig
 {
-    int time;
+    Time time;
     EventType id;
     std::string client_name;
     int table_number;
@@ -19,14 +20,14 @@ struct TableEventConfig
 
 struct ErrorEventConfig
 {
-    int time;
+    Time time;
     EventType id;
     std::string error_message;
 };
 
 struct EndEventConfig
 {
-    int time = -1;
+    Time time{-1, -1};
     EventType id = EventType::end;
 };
 

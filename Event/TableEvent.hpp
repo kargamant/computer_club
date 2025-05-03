@@ -1,5 +1,6 @@
 #include <Event.hpp>
 #include <string>
+#include <Time.hpp>
 
 class TableEvent : public Event
 {
@@ -7,7 +8,7 @@ class TableEvent : public Event
         std::string client_name;
         int table_number;
     public:
-        TableEvent(int time, EventType id, const std::string& client_name, int table_number) : 
+        TableEvent(Time time, EventType id, const std::string& client_name, int table_number) : 
             Event(time, id), 
             client_name(client_name), 
             table_number(table_number) {}
