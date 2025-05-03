@@ -12,7 +12,7 @@ YADRO Impulse 2025 test assignment
 ```
 $ cmake.exe -G "MinGW Makefiles" -S . -B .\build
 $ cd build
-$ make.exe
+$ mingw32-make.exe
 ```
 ### Linux  
 **requirements:**  
