@@ -7,11 +7,15 @@
 class Parser
 {
     private:
+        static std::string time_pattern;
+        static std::string client_name_pattern;
+        static std::string positive_number_pattern;
+
         static std::regex n_re;
-        static std::regex time_re;
         static std::regex open_close_time_re;
         static std::regex hour_price_re;
-        static std::regex client_name_re;
+        static std::regex client_event_re;
+        static std::regex table_event_re;
 
         static bool next_str(std::ifstream& fs, std::string& line, std::smatch& match, std::regex& re);
         static void throw_format_exception(const std::string& line);

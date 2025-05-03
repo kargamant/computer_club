@@ -1,6 +1,6 @@
 file(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
 
 add_library(event ${HEADERS})
-target_include_directories(event INTERFACE .)
+target_include_directories(event PUBLIC .)
 target_link_libraries(event time)
 set_target_properties(event PROPERTIES LINKER_LANGUAGE CXX)

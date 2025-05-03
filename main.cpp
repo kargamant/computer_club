@@ -11,6 +11,11 @@ int main(int argc, char* argv[])
     {
         ClubConfig cf = Parser::parse_config(fs);
         std::cout << cf;
+        while(!fs.eof())
+        {
+            EventConfig ef = Parser::parse_event(fs);
+        }
+
     }
     catch(std::runtime_error err)
     {
