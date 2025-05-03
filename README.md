@@ -6,7 +6,7 @@ YADRO Impulse 2025 test assignment
 ### Windows  
 **requirements:**  
 - cmake 3.28+
-- mingw
+- mingw32
   
 **command:**  
 ```
@@ -18,7 +18,7 @@ $ mingw32-make.exe
 **requirements:**  
 - cmake 3.28+
 - make 4.2.1+
-- g++ 13+
+- clang 10.0+
   
 **command:**  
 ```
