@@ -38,7 +38,7 @@ EventConfig EventHandler::handle(ErrorEvent* event)
 
 EventConfig EventHandler::handle(InfoEvent* event)
 {
-    return (InfoEventConfig){event->time, EventType::empty};
+    return (InfoEventConfig){event->time, event->id};
 }
 
 EventConfig EventHandler::on_client_enter(ClientEvent* event)
@@ -92,7 +92,7 @@ EventConfig EventHandler::on_client_sit(TableEvent* event)
     else
     {
 
-        if(club->isTableBusy(event->table_number))
+        if(club->isTableBusy(event->table_number-1))
             return (ErrorEventConfig){event->time, EventType::error, "PlaceIsBusy"};
 
         club->sit_client_table(event->time, event->client_name, event->table_number - 1);

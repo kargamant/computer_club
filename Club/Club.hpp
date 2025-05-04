@@ -4,6 +4,7 @@
 #include <Table.hpp>
 #include <unordered_map>
 #include <ClubConfig.hpp>
+#include <string>
 
 class Club
 {
@@ -37,6 +38,8 @@ class Club
         int remove_client(Time exit_time, const std::string& client);
         std::string get_client_from_line();
         void sit_client_table(Time enter_time, const std::string& client, int table_number);
+        std::vector<std::string> flush_clients();
 
         friend class Outputter;
+        friend class Pipeline;
 };

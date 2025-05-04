@@ -15,7 +15,6 @@ void Pipeline::make_report(const std::string& filename, std::ostream& st)
         outputter.setClub(&club);
         outputter.setStream(&st);
 
-        st << cf;
         outputter.print_open_time();
         while(!fs.eof())
         {
@@ -31,7 +30,14 @@ void Pipeline::make_report(const std::string& filename, std::ostream& st)
                 outputter.print_event(output_event.get());
         }
 
-        // ending logic here
+        std::vector<std::string> remaining = club.flush_clients();
+        for(auto& client: remaining)
+        {
+            ClientEventConfig cf{club.close_time, EventType::out_client_exit, client};
+            std::unique_ptr<BaseEvent> exit_event = EventFactory::create_event(cf);
+            outputter.print_event(exit_event.get());
+        }
+
         outputter.print_close_time();
         outputter.print_all_tables();
     }

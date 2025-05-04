@@ -11,7 +11,7 @@ void Table::on_client_sit(Time sit_time)
 void Table::on_client_exit(Time exit_time, int checkout_price)
 {
     int minutes_played = exit_time.get_in_minutes() - update_time.get_in_minutes();
-    int hours_played = minutes_played/60 + minutes_played%60!=0;
+    int hours_played = minutes_played/60 + (minutes_played%60!=0);
     revenue += checkout_price * hours_played;
     is_occupied = false;
     update_time = exit_time;

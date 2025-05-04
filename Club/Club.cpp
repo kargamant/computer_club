@@ -110,3 +110,15 @@ void Club::sit_client_table(Time enter_time, const std::string& client, int tabl
     tables[table_number].on_client_sit(enter_time);
     occupied_tables++;
 }
+
+std::vector<std::string> Club::flush_clients()
+{
+    std::vector<std::string> remaining_clients;
+    for(auto& itr: client_map)
+        remaining_clients.push_back(itr.first);
+    
+    for(auto& client: remaining_clients)
+        remove_client(close_time, client);
+    
+    return remaining_clients;
+}

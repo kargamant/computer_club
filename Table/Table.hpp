@@ -5,7 +5,7 @@
 class Table
 {
     private:
-        int revenue;
+        int revenue=0;
         Time start_time;
         Time update_time;
         bool is_occupied;
