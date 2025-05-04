@@ -65,5 +65,5 @@ EventConfig Parser::parse_event(std::ifstream& fs)
     else if(!line.empty())
         throw_format_exception(line);
 
-    return EndEventConfig();
+    return (InfoEventConfig){{-1,-1}, EventType::end};
 }

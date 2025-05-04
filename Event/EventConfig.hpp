@@ -32,16 +32,10 @@ struct ErrorEventConfig
     ErrorEventConfig(Time time, EventType id, const std::string& error_message) : time(time), id(id), error_message(error_message) {}
 };
 
-struct EndEventConfig
-{
-    Time time{-1, -1};
-    const EventType id = EventType::end;
-};
-
-struct EmptyEventConfig
+struct InfoEventConfig
 {
     Time time{-1, -1};
     const EventType id = EventType::empty;
 };
 
-using EventConfig = std::variant<ClientEventConfig, TableEventConfig, ErrorEventConfig, EndEventConfig, EmptyEventConfig>;
+using EventConfig = std::variant<ClientEventConfig, TableEventConfig, ErrorEventConfig, InfoEventConfig>;

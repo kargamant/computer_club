@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream& st, const TableEvent& event)
     return st;
 }
 
-void TableEvent::accept(EventHandler& handler)
+EventConfig TableEvent::accept(EventHandler& handler)
 {
-    handler.handle(this);
+    return handler.handle(this);
 }

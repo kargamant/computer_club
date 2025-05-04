@@ -18,9 +18,13 @@ int main(int argc, char* argv[])
 
         while(!fs.eof())
         {
-            EventConfig ef = Parser::parse_event(fs);
-            std::unique_ptr<BaseEvent> event = EventFactory::create_event(ef);
-            event->accept(handler);
+            EventConfig input_ef = Parser::parse_event(fs);
+            std::unique_ptr<BaseEvent> input_event = EventFactory::create_event(input_ef);
+
+            EventConfig output_ef = input_event->accept(handler);
+            std::unique_ptr<BaseEvent> output_event = EventFactory::create_event(output_ef);
+
+
         }
 
     }

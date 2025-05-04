@@ -13,7 +13,7 @@ class ClientEvent : public BaseEvent
     public:
         ClientEvent(Time time, EventType id, const std::string& client_name) : BaseEvent(time, id), client_name(client_name) {}
         ClientEvent(const EventConfig& config);
-        virtual void accept(EventHandler& handler) override;
+        virtual EventConfig accept(EventHandler& handler) override;
         friend std::ostream& operator<<(std::ostream& st, const ClientEvent& event);
         friend EventHandler;
 };

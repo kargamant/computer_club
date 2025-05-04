@@ -2,8 +2,7 @@
 #include <ClientEvent.hpp>
 #include <TableEvent.hpp>
 #include <ErrorEvent.hpp>
-#include <EndEvent.hpp>
-#include <EmptyEvent.hpp>
+#include <InfoEvent.hpp>
 #include <Club.hpp>
 
 class EventHandler
@@ -20,6 +19,5 @@ class EventHandler
         EventConfig handle(ClientEvent* event);
         EventConfig handle(TableEvent* event);
         EventConfig handle(ErrorEvent* event);
-        EventConfig handle(EndEvent* event);
-        EventConfig handle(EmptyEvent* event);
+        EventConfig handle(InfoEvent* event);
 };

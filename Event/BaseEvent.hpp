@@ -12,5 +12,5 @@ class BaseEvent
         BaseEvent(Time time=Time(), EventType id=EventType::end) : time(time), id(id) {}
     public:
         virtual ~BaseEvent() {}
-        virtual void accept(EventHandler& handler)=0;
+        virtual EventConfig accept(EventHandler& handler)=0;
 };

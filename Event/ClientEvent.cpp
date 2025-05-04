@@ -19,7 +19,7 @@ std::ostream& operator<<(std::ostream& st, const ClientEvent& event)
     return st;
 }
 
-void ClientEvent::accept(EventHandler& handler)
+EventConfig ClientEvent::accept(EventHandler& handler)
 {
-    handler.handle(this);
+    return handler.handle(this);
 }

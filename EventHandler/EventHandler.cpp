@@ -3,8 +3,6 @@
 
 EventConfig EventHandler::handle(ClientEvent* event)
 {
-    std::cout << *event;
-
     switch(event->id)
     {
         case 1:
@@ -13,27 +11,26 @@ EventConfig EventHandler::handle(ClientEvent* event)
             return on_client_wait(event);
         case 4:
             return on_client_exit(event);
+        default:
+            return (InfoEventConfig){event->time, EventType::empty};
     }
+
+    return (InfoEventConfig){event->time, EventType::empty};
 }
 
 EventConfig EventHandler::handle(TableEvent* event)
 {
-    std::cout << *event;
+    return (InfoEventConfig){event->time, EventType::empty};
 }
 
 EventConfig EventHandler::handle(ErrorEvent* event)
 {
-    std::cout << *event;
+    return (InfoEventConfig){event->time, EventType::empty};
 }
 
-EventConfig EventHandler::handle(EndEvent* event)
+EventConfig EventHandler::handle(InfoEvent* event)
 {
-    std::cout << *event;
-}
-
-EventConfig EventHandler::handle(EmptyEvent* event)
-{
-    std::cout << *event;
+    return (InfoEventConfig){event->time, EventType::empty};
 }
 
 EventConfig EventHandler::on_client_enter(ClientEvent* event)
@@ -45,7 +42,7 @@ EventConfig EventHandler::on_client_enter(ClientEvent* event)
     else
     {
         club->add_client(event->client_name);
-        return (EmptyEventConfig){event->time};
+        return (InfoEventConfig){event->time, EventType::empty};
     }
 }
 
@@ -60,7 +57,7 @@ EventConfig EventHandler::on_client_wait(ClientEvent* event)
     }
     else
         club->wait_client(event->client_name);
-    return (EmptyEventConfig){event->time};
+    return (InfoEventConfig){event->time, EventType::empty};
 }
 
 EventConfig EventHandler::on_client_exit(ClientEvent* event)
@@ -77,5 +74,5 @@ EventConfig EventHandler::on_client_exit(ClientEvent* event)
             return (TableEventConfig){event->time, EventType::out_client_sit, new_client, table_number};
         }
     }
-    return (EmptyEventConfig){event->time};
+    return (InfoEventConfig){event->time, EventType::empty};
 }

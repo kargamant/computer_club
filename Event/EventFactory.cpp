@@ -2,8 +2,7 @@
 #include <ClientEvent.hpp>
 #include <TableEvent.hpp>
 #include <ErrorEvent.hpp>
-#include <EndEvent.hpp>
-#include <EmptyEvent.hpp>
+#include <InfoEvent.hpp>
 
 std::unique_ptr<BaseEvent> EventFactory::creator_visitor::operator()(const ClientEventConfig& config)
 {
@@ -20,14 +19,9 @@ std::unique_ptr<BaseEvent> EventFactory::creator_visitor::operator()(const Error
     return std::make_unique<ErrorEvent>(config);
 }
 
-std::unique_ptr<BaseEvent> EventFactory::creator_visitor::operator()(const EndEventConfig& config)
+std::unique_ptr<BaseEvent> EventFactory::creator_visitor::operator()(const InfoEventConfig& config)
 {
-    return std::make_unique<EndEvent>(config);
-}
-
-std::unique_ptr<BaseEvent> EventFactory::creator_visitor::operator()(const EmptyEventConfig& config)
-{
-    return std::make_unique<EmptyEvent>(config);
+    return std::make_unique<InfoEvent>(config);
 }
 
 std::unique_ptr<BaseEvent> EventFactory::create_event(const EventConfig& config)

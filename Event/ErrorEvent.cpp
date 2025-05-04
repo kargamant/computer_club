@@ -19,7 +19,7 @@ std::ostream& operator<<(std::ostream& st, const ErrorEvent& event)
     return st;
 }
 
-void ErrorEvent::accept(EventHandler& handler)
+EventConfig ErrorEvent::accept(EventHandler& handler)
 {
-    handler.handle(this);
+    return handler.handle(this);
 }

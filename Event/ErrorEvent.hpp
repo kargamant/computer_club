@@ -13,7 +13,7 @@ class ErrorEvent : public BaseEvent
     public:
         ErrorEvent(Time time, EventType id, const std::string& error_message) : BaseEvent(time, id), error_message(error_message) {}
         ErrorEvent(const EventConfig& config);
-        virtual void accept(EventHandler& handler) override;
+        virtual EventConfig accept(EventHandler& handler) override;
         friend std::ostream& operator<<(std::ostream& st, const ErrorEvent& event);
         friend EventHandler;
 };
