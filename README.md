@@ -14,6 +14,8 @@ YADRO Impulse 2025 test assignment
 - **ErrorEvent** - errors. ID: 13
 - **InfoEvent** - info messages. Created for debug purposes, but can be used for transfering messages between modules.  
 
+**Tests are provided in test_files directory.**  
+
 ## Build info   
 
 ### Windows  
