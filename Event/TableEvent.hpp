@@ -17,6 +17,7 @@ class TableEvent : public BaseEvent
             table_number(table_number) {}
         TableEvent(const EventConfig& config);
         virtual EventConfig accept(EventHandler& handler) override;
+        virtual std::string get_formatted() override;
         friend std::ostream& operator<<(std::ostream& st, const TableEvent& event);
         friend EventHandler;
 };

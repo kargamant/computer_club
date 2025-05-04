@@ -28,9 +28,13 @@ class Club
         bool isInTime(Time& time);
         bool isFreeTables();
         bool isLineFull();
+        bool isTableBusy(int table_number);
+        int get_client_table(const std::string& client);
         void add_client(const std::string& client);
         void wait_client(const std::string& client);
         int remove_client(Time exit_time, const std::string& client);
         std::string get_client_from_line();
         void sit_client_table(Time enter_time, const std::string& client, int table_number);
+
+        friend class Outputter;
 };

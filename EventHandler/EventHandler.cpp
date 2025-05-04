@@ -20,6 +20,14 @@ EventConfig EventHandler::handle(ClientEvent* event)
 
 EventConfig EventHandler::handle(TableEvent* event)
 {
+    switch(event->id)
+    {
+        case 2:
+            return on_client_sit(event);
+        default:
+            return (InfoEventConfig){event->time, EventType::empty};
+    }
+
     return (InfoEventConfig){event->time, EventType::empty};
 }
 
@@ -71,8 +79,23 @@ EventConfig EventHandler::on_client_exit(ClientEvent* event)
         if(!new_client.empty())
         {
             club->sit_client_table(event->time, new_client, table_number);
-            return (TableEventConfig){event->time, EventType::out_client_sit, new_client, table_number};
+            return (TableEventConfig){event->time, EventType::out_client_sit, new_client, table_number+1};
         }
+    }
+    return (InfoEventConfig){event->time, EventType::empty};
+}
+
+EventConfig EventHandler::on_client_sit(TableEvent* event)
+{
+    if(!club->isInClub(event->client_name))
+        return (ErrorEventConfig){event->time, EventType::error, "ClientUnknown"};
+    else
+    {
+
+        if(club->isTableBusy(event->table_number))
+            return (ErrorEventConfig){event->time, EventType::error, "PlaceIsBusy"};
+
+        club->sit_client_table(event->time, event->client_name, event->table_number - 1);
     }
     return (InfoEventConfig){event->time, EventType::empty};
 }

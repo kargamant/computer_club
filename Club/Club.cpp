@@ -39,6 +39,17 @@ bool Club::isFreeTables()
     return occupied_tables < n;
 }
 
+bool Club::isTableBusy(int table_number)
+{
+    return tables[table_number].isOccupied();
+}
+
+int Club::get_client_table(const std::string& client)
+{
+    return client_map[client];
+}
+
+
 void Club::add_client(const std::string& client)
 {
     client_map.insert({client, -1});
@@ -62,6 +73,7 @@ int Club::remove_client(Time exit_time, const std::string& client)
         client_map.erase(client);
         return table_number;
     }
+    return -1;
 }
 
 std::string Club::get_client_from_line()
@@ -77,7 +89,15 @@ std::string Club::get_client_from_line()
 
 void Club::sit_client_table(Time enter_time, const std::string& client, int table_number)
 {
+    int prev_table_number = client_map[client];
+    if(prev_table_number!=-1)
+    {
+        tables[prev_table_number].on_client_exit(enter_time, hour_price);
+        occupied_tables--;
+    }
+
     client_map[client] = table_number;
+    //std::cout << "table_number: " << table_number << std::endl;
     tables[table_number].on_client_sit(enter_time);
     occupied_tables++;
 }

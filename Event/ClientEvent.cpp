@@ -9,6 +9,11 @@ ClientEvent::ClientEvent(const EventConfig& config)
     client_name = cf.client_name;
 }
 
+std::string ClientEvent::get_formatted()
+{
+    return time.get_formatted() + " " + std::to_string(id) + " " + client_name;
+}
+
 std::ostream& operator<<(std::ostream& st, const ClientEvent& event)
 {
     st << "ClientEvent:" << std::endl;

@@ -25,3 +25,8 @@ EventConfig TableEvent::accept(EventHandler& handler)
 {
     return handler.handle(this);
 }
+
+std::string TableEvent::get_formatted()
+{
+    return time.get_formatted() + " " + std::to_string(id) + " " + client_name + " " + std::to_string(table_number);
+}

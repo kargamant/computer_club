@@ -9,6 +9,11 @@ ErrorEvent::ErrorEvent(const EventConfig& config)
     error_message = cf.error_message;
 }
 
+std::string ErrorEvent::get_formatted()
+{
+    return time.get_formatted() + " " + std::to_string(id) + " " + error_message;
+}
+
 std::ostream& operator<<(std::ostream& st, const ErrorEvent& event)
 {
     st << "ErrorEvent:" << std::endl;

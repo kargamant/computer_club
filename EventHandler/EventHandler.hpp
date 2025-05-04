@@ -13,6 +13,7 @@ class EventHandler
         EventConfig on_client_enter(ClientEvent* event);
         EventConfig on_client_wait(ClientEvent* event);
         EventConfig on_client_exit(ClientEvent* event);
+        EventConfig on_client_sit(TableEvent* event);
     public:
         EventHandler(Club* club) : club(club) {}
 

@@ -10,6 +10,7 @@ endif (UNIX)
 
 Project("COMPUTER_CLUB")
 
+add_subdirectory(Outputter)
 add_subdirectory(EventHandler)
 add_subdirectory(Time)
 add_subdirectory(Table)
@@ -19,4 +20,4 @@ add_subdirectory(Parser)
 
 add_executable(main main.cpp)
 target_include_directories(main PUBLIC .)
-target_link_libraries(main parser club)
+target_link_libraries(main parser club outputter)
