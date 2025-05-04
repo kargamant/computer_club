@@ -9,5 +9,6 @@ enum EventType
     out_client_exit = 11,
     out_client_sit = 12,
     error = 13,
-    end = -1
+    end = -1,
+    empty = -2
 };

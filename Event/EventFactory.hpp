@@ -11,6 +11,7 @@ class EventFactory
             std::unique_ptr<BaseEvent> operator()(const TableEventConfig& config);
             std::unique_ptr<BaseEvent> operator()(const ErrorEventConfig& config);
             std::unique_ptr<BaseEvent> operator()(const EndEventConfig& config);
+            std::unique_ptr<BaseEvent> operator()(const EmptyEventConfig& config);
         };
     public:
         static std::unique_ptr<BaseEvent> create_event(const EventConfig& config);

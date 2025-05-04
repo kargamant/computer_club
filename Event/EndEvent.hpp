@@ -11,6 +11,7 @@ class EndEvent : public BaseEvent
         EndEvent(const EventConfig& config) : BaseEvent({-1, -1}, EventType::end) {}
         virtual void accept(EventHandler& handler) override;
         friend std::ostream& operator<<(std::ostream& st, const EndEvent& event);
+        friend EventHandler;
 };
 
 std::ostream& operator<<(std::ostream& st, const EndEvent& event);

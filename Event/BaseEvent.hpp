@@ -13,5 +13,4 @@ class BaseEvent
     public:
         virtual ~BaseEvent() {}
         virtual void accept(EventHandler& handler)=0;
-
 };

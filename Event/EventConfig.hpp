@@ -38,4 +38,10 @@ struct EndEventConfig
     const EventType id = EventType::end;
 };
 
-using EventConfig = std::variant<ClientEventConfig, TableEventConfig, ErrorEventConfig, EndEventConfig>;
+struct EmptyEventConfig
+{
+    Time time{-1, -1};
+    const EventType id = EventType::empty;
+};
+
+using EventConfig = std::variant<ClientEventConfig, TableEventConfig, ErrorEventConfig, EndEventConfig, EmptyEventConfig>;

@@ -15,7 +15,7 @@ class ErrorEvent : public BaseEvent
         ErrorEvent(const EventConfig& config);
         virtual void accept(EventHandler& handler) override;
         friend std::ostream& operator<<(std::ostream& st, const ErrorEvent& event);
-
+        friend EventHandler;
 };
 
 std::ostream& operator<<(std::ostream& st, const ErrorEvent& event);
