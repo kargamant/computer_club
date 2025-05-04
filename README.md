@@ -6,7 +6,7 @@ YADRO Impulse 2025 test assignment
 ### Windows  
 **requirements:**  
 - cmake 3.28+
-- mingw32
+- mingw32-make
   
 **command:**  
 ```
