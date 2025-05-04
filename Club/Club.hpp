@@ -20,7 +20,6 @@ class Club
         std::queue<std::string> wait_line;
         std::vector<Table> tables;
         std::unordered_map<std::string, int> client_map;
-        int total_revenue;
     public:
         Club(int n=0, Time open_time={-1,-1}, Time close_time={-1,-1}, int hour_price=0);
         Club(const ClubConfig& config);
