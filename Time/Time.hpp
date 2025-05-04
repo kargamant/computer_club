@@ -10,3 +10,5 @@ struct Time
     int get_in_minutes();
     std::string get_formatted() const;
 };
+
+std::ostream& operator<<(std::ostream& st, const Time& time);

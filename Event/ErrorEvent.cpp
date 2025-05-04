@@ -1,4 +1,5 @@
 #include <ErrorEvent.hpp>
+#include <EventHandler.hpp>
 
 ErrorEvent::ErrorEvent(const EventConfig& config)
 {
@@ -6,4 +7,19 @@ ErrorEvent::ErrorEvent(const EventConfig& config)
     time = cf.time;
     id = cf.id;
     error_message = cf.error_message;
+}
+
+std::ostream& operator<<(std::ostream& st, const ErrorEvent& event)
+{
+    st << "ErrorEvent:" << std::endl;
+    st << "time: " << event.time << std::endl;
+    st << "id: " << event.id << std::endl;
+    st << "error_message: " << event.error_message << std::endl;
+
+    return st;
+}
+
+void ErrorEvent::accept(EventHandler& handler)
+{
+    handler.handle(this);
 }

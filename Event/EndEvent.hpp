@@ -1,12 +1,16 @@
-#include <Event.hpp>
+#pragma once
+#include <BaseEvent.hpp>
 #include <Time.hpp>
 #include <EventConfig.hpp>
+#include <iostream>
 
-class EventFactory;
-
-class EndEvent : public Event
+class EndEvent : public BaseEvent
 {
     public:
-        EndEvent() : Event({-1, -1}, EventType::end) {}
-        EndEvent(const EventConfig& config) : Event({-1, -1}, EventType::end) {}
+        EndEvent() : BaseEvent({-1, -1}, EventType::end) {}
+        EndEvent(const EventConfig& config) : BaseEvent({-1, -1}, EventType::end) {}
+        virtual void accept(EventHandler& handler) override;
+        friend std::ostream& operator<<(std::ostream& st, const EndEvent& event);
 };
+
+std::ostream& operator<<(std::ostream& st, const EndEvent& event);

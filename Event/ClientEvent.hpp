@@ -1,15 +1,20 @@
-#include <Event.hpp>
+#pragma once
+#include <BaseEvent.hpp>
 #include <string>
 #include <Time.hpp>
 #include <EventConfig.hpp>
+#include <iostream>
 
 
-class ClientEvent : public Event
+class ClientEvent : public BaseEvent
 {
     private:
         std::string client_name;
     public:
-        ClientEvent(Time time, EventType id, const std::string& client_name) : Event(time, id), client_name(client_name) {}
+        ClientEvent(Time time, EventType id, const std::string& client_name) : BaseEvent(time, id), client_name(client_name) {}
         ClientEvent(const EventConfig& config);
+        virtual void accept(EventHandler& handler) override;
+        friend std::ostream& operator<<(std::ostream& st, const ClientEvent& event);
 };
 
+std::ostream& operator<<(std::ostream& st, const ClientEvent& event);

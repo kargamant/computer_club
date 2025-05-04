@@ -1,3 +1,4 @@
+#pragma once
 #include <Time.hpp>
 #include <queue>
 #include <Table.hpp>
@@ -21,4 +22,5 @@ class Club
         int total_revenue;
     public:
         Club(int n, Time open_time, Time close_time, int hour_price);
+        Club(const ClubConfig& config);
 };

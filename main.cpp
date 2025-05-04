@@ -3,6 +3,7 @@
 #include <fstream>
 #include <exception>
 #include <EventFactory.hpp>
+#include <EventHandler.hpp>
 
 int main(int argc, char* argv[])
 {
@@ -12,10 +13,14 @@ int main(int argc, char* argv[])
     {
         ClubConfig cf = Parser::parse_config(fs);
         std::cout << cf;
+        Club club{cf};
+        EventHandler handler{&club};
+
         while(!fs.eof())
         {
             EventConfig ef = Parser::parse_event(fs);
-            Event* event = EventFactory::create_event(ef).get();
+            std::unique_ptr<BaseEvent> event = EventFactory::create_event(ef);
+            event->accept(handler);
         }
 
     }

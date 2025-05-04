@@ -8,3 +8,12 @@ Club::Club(int n, Time open_time, Time close_time, int hour_price) : n(n),
 {
     tables.resize(n);   
 }
+
+Club::Club(const ClubConfig& config) : n(config.n),
+                                       open_time(config.open_time),
+                                       close_time(config.close_time),
+                                       hour_price(config.hour_price),
+                                       occupied_tables(0)
+{
+    tables.resize(n);
+}

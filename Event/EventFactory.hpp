@@ -1,16 +1,17 @@
 #include <EventConfig.hpp>
-#include <Event.hpp>
+#include <BaseEvent.hpp>
 #include <memory>
 
 class EventFactory
 {
     private:
-        // template<typename T>
-        // static std::unique_ptr<Event> alloc_event(const EventConfig& config);
-        const auto visitor = overloads
+        struct creator_visitor
         {
-            
+            std::unique_ptr<BaseEvent> operator()(const ClientEventConfig& config);
+            std::unique_ptr<BaseEvent> operator()(const TableEventConfig& config);
+            std::unique_ptr<BaseEvent> operator()(const ErrorEventConfig& config);
+            std::unique_ptr<BaseEvent> operator()(const EndEventConfig& config);
         };
     public:
-        static std::unique_ptr<Event> create_event(const EventConfig& config);
+        static std::unique_ptr<BaseEvent> create_event(const EventConfig& config);
 };

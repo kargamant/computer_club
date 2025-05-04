@@ -9,3 +9,9 @@ std::string Time::get_formatted() const
 {
     return (hour < 10 ? "0" : "") + std::to_string(hour) + ":" + (minute < 10 ? "0" : "") + std::to_string(minute);
 }
+
+std::ostream& operator<<(std::ostream& st, const Time& time)
+{
+    st << time.get_formatted();
+    return st;
+}

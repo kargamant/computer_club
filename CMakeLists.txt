@@ -10,6 +10,7 @@ endif (UNIX)
 
 Project("COMPUTER_CLUB")
 
+add_subdirectory(EventHandler)
 add_subdirectory(Time)
 add_subdirectory(Table)
 add_subdirectory(Event)
