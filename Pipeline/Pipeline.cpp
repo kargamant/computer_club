@@ -21,12 +21,13 @@ void Pipeline::make_report(const std::string& filename, std::ostream& st)
             EventConfig input_ef = Parser::parse_event(fs);
             std::unique_ptr<BaseEvent> input_event = EventFactory::create_event(input_ef);
 
-            outputter.print_event(input_event.get());
+            if(input_event.get()->getType() != EventType::empty && input_event.get()->getType() != EventType::end)
+                outputter.print_event(input_event.get());
 
             EventConfig output_ef = input_event->accept(handler);
             std::unique_ptr<BaseEvent> output_event = EventFactory::create_event(output_ef);
             
-            if(output_event.get()->getType() != EventType::empty)
+            if(output_event.get()->getType() != EventType::empty && input_event.get()->getType() != EventType::end)
                 outputter.print_event(output_event.get());
         }
 

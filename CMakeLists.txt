@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 SET(CMAKE_CXX_STANDARD 20)
 
-file(COPY test_file.txt DESTINATION .)
+file(COPY test_files DESTINATION .)
 
 if (UNIX)
     SET(CMAKE_CXX_COMPILER "/usr/bin/clang++")
