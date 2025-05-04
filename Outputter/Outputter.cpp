@@ -1,6 +1,27 @@
 #include <Outputter.hpp>
 
-void Outputter::print(std::ostream& st, BaseEvent* event)
+void Outputter::print_event(BaseEvent* event)
 {
-    std::cout << event->get_formatted() << std::endl;
+    *st << event->get_formatted() << std::endl;
+}
+
+void Outputter::print_open_time()
+{
+    *st << club->open_time.get_formatted() << std::endl;
+}
+
+void Outputter::print_close_time()
+{
+    *st << club->close_time.get_formatted() << std::endl;
+}
+
+void Outputter::print_table(int table_number)
+{
+    *st << club->tables[table_number].get_formatted(table_number+1) << std::endl;
+}
+
+void Outputter::print_all_tables()
+{
+    for(int i=0; i<club->n; i++)
+        print_table(i);
 }

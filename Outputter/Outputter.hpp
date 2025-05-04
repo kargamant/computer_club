@@ -5,8 +5,15 @@ class Outputter
 {
     private:
         Club* club;
+        std::ostream* st;
     public:
-        Outputter(Club* club) : club(club) {}
+        Outputter(Club* club=nullptr, std::ostream* st=nullptr) : club(club), st(st) {}
+        void setClub(Club* club) {this->club = club;}
+        void setStream(std::ostream* st) {this->st = st;}
 
-        static void print(std::ostream& st, BaseEvent* event);
+        void print_event(BaseEvent* event);
+        void print_open_time();
+        void print_close_time();
+        void print_table(int table_number);
+        void print_all_tables();
 };

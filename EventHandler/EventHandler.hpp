@@ -15,7 +15,8 @@ class EventHandler
         EventConfig on_client_exit(ClientEvent* event);
         EventConfig on_client_sit(TableEvent* event);
     public:
-        EventHandler(Club* club) : club(club) {}
+        EventHandler(Club* club=nullptr) : club(club) {}
+        void setClub(Club* club) {this->club = club;}
 
         EventConfig handle(ClientEvent* event);
         EventConfig handle(TableEvent* event);

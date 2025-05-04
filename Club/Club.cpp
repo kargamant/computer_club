@@ -18,6 +18,15 @@ Club::Club(const ClubConfig& config) : n(config.n),
     tables.resize(n);
 }
 
+void Club::setConfig(const ClubConfig& config)
+{
+    n = config.n;
+    open_time = config.open_time;
+    close_time = config.close_time;
+    hour_price = config.hour_price;
+    tables.resize(n);
+}
+
 bool Club::isInClub(const std::string& client)
 {
     return client_map.contains(client);

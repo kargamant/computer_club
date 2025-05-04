@@ -23,13 +23,8 @@ Time& Time::operator=(const Time& ntime)
     return *this;
 }
 
-// Time& Time::operator=(Time&& ntime)
-// {
-//     hour = ntime.hour;
-//     minute = ntime.minute;
-
-//     ntime.hour = -1;
-//     ntime.minute = -1;
-
-//     return *this;
-// }
+Time operator-(Time& time1, Time& time2)
+{
+    int diff = time1.get_in_minutes() - time2.get_in_minutes();
+    return {diff/60, diff%60};
+}
