@@ -2,7 +2,7 @@
 YADRO Impulse 2025 test assignment
 
 ## Architecture  
-![system drawio (2)](https://github.com/user-attachments/assets/b1cd31cb-061a-42a0-881f-8be4bdb1fcd2)
+![system drawio (3)](https://github.com/user-attachments/assets/9e10f89c-ef71-46bc-91b6-236a6c5498b1)
 ## Core moments  
 - 3 main units: Parser, EventHandler, Outputter.  
 - EventFactory to separate building process from parsing and handling logic. Easy to add new events.  
