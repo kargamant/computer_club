@@ -15,6 +15,10 @@ std::regex Parser::table_event_re{Parser::time_pattern + " " + Parser::positive_
 bool Parser::next_str(std::ifstream& fs, std::string& line, std::smatch& match, std::regex& re)
 {
     std::getline(fs, line);
+
+    if(line.back() == '\r')
+        line.pop_back();
+
     std::regex_match(line, match, re);
     return match.empty();
 }
@@ -57,6 +61,9 @@ EventConfig Parser::parse_event(std::ifstream& fs)
     std::string line;
 
     std::getline(fs, line);
+
+    if(line.back() == '\r')
+        line.pop_back();
 
     if(std::regex_match(line, match, client_event_re))
         return (ClientEventConfig){{stoi(match.str(2)), stoi(match.str(3))}, (EventType)stoi(match.str(4)), match.str(5)};
